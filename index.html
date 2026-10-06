@@ -1,238 +1,1253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5f5f7">
 
-<title>nXt Wallpaper</title>
+  <title>nXt Wallpaper</title>
 
-<style>
-:root {
-  --bg: #f5f5f7;
-  --card: #ffffff;
-  --text: #1c1c1e;
-  --muted: #6e6e73;
-  --accent: #007aff;
-  --border: #d1d1d6;
-  --disabled: #a1a1a6;
-  --danger: #ff3b30;
-}
+  <style>
+    :root {
+      color-scheme: light dark;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000000;
-    --card: #1c1c1e;
-    --text: #ffffff;
-    --muted: #a1a1a6;
-    --border: #3a3a3c;
-  }
-}
+      --page: #f5f5f7;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-solid: #ffffff;
 
-* {
-  box-sizing: border-box;
-}
+      --text: #1d1d1f;
+      --secondary: #6e6e73;
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(0,122,255,0.25), transparent 35%),
-    var(--bg);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-}
+      --blue: #007aff;
+      --blue-hover: #0071e3;
 
-.card {
-  width: 100%;
-  max-width: 430px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 32px;
-  padding: 28px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-}
+      --disabled: #d2d2d7;
+      --disabled-text: #86868b;
 
-.icon {
-  width: 92px;
-  height: 92px;
-  margin: 0 auto 18px;
-  border-radius: 24px;
-  background:
-    linear-gradient(135deg, #007aff, #64d2ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  font-weight: 800;
-  color: white;
-  box-shadow: 0 10px 30px rgba(0,122,255,0.35);
-}
+      --red: #d70015;
 
-h1 {
-  margin: 0;
-  font-size: 42px;
-  letter-spacing: -1.5px;
-}
+      --line: rgba(0, 0, 0, 0.09);
 
-.tagline {
-  margin: 8px 0 18px;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.4;
-}
+      --shadow:
+        0 24px 70px rgba(0, 0, 0, 0.09);
 
-.fast-line {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 18px 0;
-}
+      --radius: 30px;
+    }
 
-.description {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.5;
-  margin-bottom: 22px;
-}
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #000000;
+        --surface: rgba(28, 28, 30, 0.82);
+        --surface-solid: #1c1c1e;
 
-.support {
-  display: inline-block;
-  font-size: 13px;
-  color: var(--muted);
-  background: rgba(127,127,127,0.12);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 8px 13px;
-  margin-bottom: 20px;
-}
+        --text: #f5f5f7;
+        --secondary: #a1a1a6;
 
-.main-button {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  background: var(--accent);
-  color: white;
-  font-size: 19px;
-  font-weight: 700;
-  padding: 16px;
-  border-radius: 18px;
-  margin-top: 8px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
+        --blue: #0a84ff;
+        --blue-hover: #409cff;
 
-.main-button:active {
-  transform: scale(0.97);
-}
+        --disabled: #3a3a3c;
+        --disabled-text: #8e8e93;
 
-.main-button.disabled {
-  background: var(--disabled);
-  pointer-events: none;
-  opacity: 0.65;
-}
+        --red: #ff453a;
 
-.warning {
-  display: none;
-  margin-top: 12px;
-  color: var(--danger);
-  font-size: 14px;
-  font-weight: 600;
-}
+        --line: rgba(255, 255, 255, 0.11);
 
-.secondary-links {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
+        --shadow:
+          0 24px 70px rgba(0, 0, 0, 0.45);
+      }
+    }
 
-.secondary-links a {
-  flex: 1;
-  text-decoration: none;
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 600;
-  padding: 11px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(127,127,127,0.08);
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.footer {
-  margin-top: 24px;
-  color: var(--muted);
-  font-size: 12px;
-}
-</style>
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(10, 132, 255, 0.18),
+          transparent 38%
+        ),
+        var(--page);
+
+      color: var(--text);
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      width: min(100% - 32px, 680px);
+      margin: 0 auto;
+      padding:
+        max(42px, env(safe-area-inset-top))
+        0
+        max(34px, env(safe-area-inset-bottom));
+    }
+
+    /* ------------------------------------------------
+       HERO
+    ------------------------------------------------ */
+
+    .hero {
+      text-align: center;
+      padding: 30px 10px 38px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 22px;
+
+      color: var(--secondary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .mark {
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+
+      background: var(--blue);
+
+      box-shadow:
+        0 0 0 5px rgba(0, 122, 255, 0.11);
+    }
+
+    h1 {
+      margin: 0;
+
+      font-size: clamp(56px, 16vw, 92px);
+      line-height: 0.92;
+
+      font-weight: 750;
+      letter-spacing: -0.065em;
+    }
+
+    .wallpaper-word {
+      display: block;
+
+      margin-top: 12px;
+
+      color: var(--secondary);
+
+      font-size: clamp(22px, 6vw, 30px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+    }
+
+    .tagline {
+      max-width: 470px;
+
+      margin:
+        25px auto
+        0;
+
+      font-size: clamp(19px, 5vw, 24px);
+      line-height: 1.25;
+
+      font-weight: 650;
+      letter-spacing: -0.025em;
+    }
+
+    .tagline strong {
+      color: var(--blue);
+    }
+
+    .intro {
+      max-width: 500px;
+
+      margin:
+        14px auto
+        0;
+
+      color: var(--secondary);
+
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    /* ------------------------------------------------
+       DOWNLOAD
+    ------------------------------------------------ */
+
+    .download-card {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 28px;
+
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+
+      background: var(--surface);
+
+      -webkit-backdrop-filter: blur(28px);
+      backdrop-filter: blur(28px);
+
+      box-shadow: var(--shadow);
+    }
+
+    .download-card::before {
+      content: "";
+
+      position: absolute;
+      top: -90px;
+      right: -90px;
+
+      width: 220px;
+      height: 220px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(10, 132, 255, 0.17),
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+
+      color: var(--secondary);
+
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+    }
+
+    .download-card h2 {
+      margin: 0;
+
+      font-size: 30px;
+      line-height: 1.08;
+
+      letter-spacing: -0.035em;
+    }
+
+    .compatibility {
+      margin: 9px 0 24px;
+
+      color: var(--secondary);
+
+      font-size: 15px;
+    }
+
+    .get-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-height: 58px;
+
+      border: 0;
+      border-radius: 18px;
+
+      background: var(--blue);
+      color: #ffffff;
+
+      text-decoration: none;
+
+      font-size: 18px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        opacity 160ms ease;
+    }
+
+    .get-button:hover {
+      background: var(--blue-hover);
+    }
+
+    .get-button:active {
+      transform: scale(0.985);
+    }
+
+    .get-button.disabled {
+      background: var(--disabled);
+      color: var(--disabled-text);
+
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .status-message {
+      display: none;
+
+      margin:
+        11px 4px
+        0;
+
+      color: var(--red);
+
+      text-align: center;
+
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .loading {
+      margin:
+        11px 4px
+        0;
+
+      color: var(--secondary);
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+    /* ------------------------------------------------
+       WHY nXt
+    ------------------------------------------------ */
+
+    .why {
+      padding: 54px 8px 18px;
+      text-align: center;
+    }
+
+    .why h2 {
+      margin: 0;
+
+      font-size: 31px;
+      letter-spacing: -0.04em;
+    }
+
+    .why p {
+      max-width: 500px;
+
+      margin:
+        13px auto
+        0;
+
+      color: var(--secondary);
+
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .speed-line {
+      display: inline-block;
+
+      margin-top: 19px;
+      padding: 9px 14px;
+
+      border-radius: 999px;
+
+      background: rgba(0, 122, 255, 0.09);
+      color: var(--blue);
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* ------------------------------------------------
+       REQUIREMENTS
+    ------------------------------------------------ */
+
+    .requirements {
+      margin-top: 35px;
+      padding: 26px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .requirements h2 {
+      margin:
+        0 0
+        17px;
+
+      font-size: 22px;
+      letter-spacing: -0.025em;
+    }
+
+    .requirement {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 11px;
+
+      padding: 12px 0;
+    }
+
+    .requirement + .requirement {
+      border-top: 1px solid var(--line);
+    }
+
+    .requirement-icon {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+
+      padding-top: 1px;
+
+      font-size: 16px;
+    }
+
+    .requirement strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      font-size: 15px;
+    }
+
+    .requirement p {
+      margin: 0;
+
+      color: var(--secondary);
+
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .requirement a {
+      color: var(--blue);
+
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ------------------------------------------------
+       SOCIAL + FOOTER
+    ------------------------------------------------ */
+
+    .social {
+      margin-top: 18px;
+
+      text-align: center;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 10px 14px;
+
+      color: var(--secondary);
+
+      text-decoration: none;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      border-radius: 999px;
+
+      transition:
+        color 150ms ease,
+        background 150ms ease;
+    }
+
+    .social a:hover {
+      color: var(--text);
+      background: rgba(127, 127, 127, 0.09);
+    }
+
+    footer {
+      padding:
+        28px 10px
+        0;
+
+      color: var(--secondary);
+
+      text-align: center;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: min(100% - 24px, 680px);
+      }
+
+      .download-card {
+        padding: 23px;
+        border-radius: 26px;
+      }
+
+      .requirements {
+        padding:
+          25px 12px
+          5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<main class="card">
-  <div class="icon">nXt</div>
+  <main class="page">
 
-  <h1>nXt</h1>
+    <!-- HERO -->
 
-  <p class="tagline">
-    One tap. New wallpaper. Done.
-  </p>
+    <section class="hero">
+      <div class="brand">
+        <span class="mark"></span>
+        Skylark
+      </div>
 
-  <div class="fast-line">
-    nXt Wallpaper changes your look fast.
-  </div>
+      <h1>
+        nXt
+        <span class="wallpaper-word">Wallpaper</span>
+      </h1>
 
-  <p class="description">
-    nXt is named after what it does: it gets your device to the next wallpaper quickly.
-    No digging, no setup maze, just tap and switch.
-  </p>
+      <p class="tagline">
+        Your <strong>next</strong> wallpaper is one tap away.
+      </p>
 
-  <div class="support">
-    Supports iOS 18.0 and later
-  </div>
+      <p class="intro">
+        nXt makes changing your wallpaper fast.
+        Tap once, switch things up, and keep moving.
+      </p>
+    </section>
 
-  <a id="getButton" class="main-button" href="https://example.com/nxt-download">
-    Get nXt
-  </a>
 
-  <p id="warning" class="warning">
-    nXt requires iOS 18.0 or later.
-  </p>
+    <!-- DOWNLOAD -->
 
-  <div class="secondary-links">
-    <a href="whats-new.html">What’s New</a>
-    <a href="previous-versions.html">Previous Versions</a>
-  </div>
+    <section class="download-card">
+      <p class="eyebrow">Get nXt</p>
 
-  <div class="footer">
-    © <span id="year"></span> Skylark Inc. All rights reserved.
-  </div>
-</main>
+      <h2>Ready for something nXt?</h2>
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
+      <p
+        class="compatibility"
+        id="compatibilityText"
+      >
+        Checking compatibility…
+      </p>
 
-function getIOSVersion() {
-  const ua = navigator.userAgent;
-  const match = ua.match(/OS (\d+)_/);
+      <a
+        class="get-button disabled"
+        id="getButton"
+        href="#"
+        aria-disabled="true"
+      >
+        Get nXt
+      </a>
 
-  if (/iPhone|iPad|iPod/.test(ua) && match) {
-    return parseInt(match[1], 10);
-  }
+      <p
+        class="status-message"
+        id="statusMessage"
+        role="status"
+      ></p>
 
-  return null;
-}
+      <p
+        class="loading"
+        id="loadingMessage"
+      >
+        Checking availability…
+      </p>
+    </section>
 
-const iosVersion = getIOSVersion();
-const getButton = document.getElementById("getButton");
-const warning = document.getElementById("warning");
 
-if (iosVersion === null || iosVersion < 18) {
-  getButton.classList.add("disabled");
-  warning.style.display = "block";
-}
-</script>
+    <!-- WHY nXt -->
+
+    <section class="why">
+      <h2>Why nXt?</h2>
+
+      <p>
+        Because changing your wallpaper shouldn't feel like a project.
+        nXt is built around one idea: get to the next one, fast.
+      </p>
+
+      <span class="speed-line">
+        One tap. Next wallpaper.
+      </span>
+    </section>
+
+
+    <!-- REQUIREMENTS -->
+
+    <section class="requirements">
+      <h2>Before you get nXt</h2>
+
+      <div class="requirement">
+        <div class="requirement-icon">✓</div>
+
+        <div>
+          <strong>Skylark server access</strong>
+
+          <p>
+            nXt uses Skylark servers.
+            You must have access before using nXt.
+            If you don't have access,
+            <a href="https://skylark-inc.github.io/Join/">
+              request access
+            </a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="requirement">
+        <div class="requirement-icon">✓</div>
+
+        <div>
+          <strong>Shortcuts permissions</strong>
+
+          <p>
+            Make sure the security and sharing permissions required
+            by Shortcuts are enabled for your version of iOS or iPadOS.
+            Apple may change the names or locations of these settings
+            between releases.
+          </p>
+        </div>
+      </div>
+
+      <div class="requirement">
+        <div class="requirement-icon">✓</div>
+
+        <div>
+          <strong>iCloud</strong>
+
+          <p>
+            iCloud must be enabled and available on your device.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SOCIAL -->
+
+    <div class="social">
+      <a
+        href="https://x.com/ThenXtteam"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Follow @ThenXtteam on X
+      </a>
+    </div>
+
+
+    <footer>
+      © <span id="year"></span> Skylark Inc.
+      All rights reserved.
+    </footer>
+
+  </main>
+
+
+  <script>
+    /*
+      ============================================================
+      nXt RELEASE PAGE
+      ============================================================
+
+      Source of truth:
+      https://skylark-inc.github.io/releases.json
+
+      This page intentionally does NOT hardcode:
+        • nXt minimum OS
+        • maximum OS
+        • availability
+        • download URL
+        • EOL status
+
+      Those values are read from releases.json.
+    */
+
+
+    const RELEASES_URL =
+      "https://skylark-inc.github.io/releases.json";
+
+    const PRODUCT_ID = "nxt";
+
+
+    const getButton =
+      document.getElementById("getButton");
+
+    const compatibilityText =
+      document.getElementById("compatibilityText");
+
+    const statusMessage =
+      document.getElementById("statusMessage");
+
+    const loadingMessage =
+      document.getElementById("loadingMessage");
+
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+
+    /*
+      ------------------------------------------------------------
+      VERSION HELPERS
+      ------------------------------------------------------------
+    */
+
+
+    function parseVersion(version) {
+      if (
+        version === null ||
+        version === undefined ||
+        version === ""
+      ) {
+        return null;
+      }
+
+      return String(version)
+        .split(".")
+        .map(part => {
+          const number = parseInt(part, 10);
+          return Number.isNaN(number) ? 0 : number;
+        });
+    }
+
+
+    function compareVersions(a, b) {
+      const versionA = parseVersion(a);
+      const versionB = parseVersion(b);
+
+      if (!versionA || !versionB) {
+        return 0;
+      }
+
+      const length =
+        Math.max(versionA.length, versionB.length);
+
+      for (let i = 0; i < length; i++) {
+        const numberA = versionA[i] || 0;
+        const numberB = versionB[i] || 0;
+
+        if (numberA > numberB) {
+          return 1;
+        }
+
+        if (numberA < numberB) {
+          return -1;
+        }
+      }
+
+      return 0;
+    }
+
+
+
+    /*
+      ------------------------------------------------------------
+      SKYLARK DEVICE IDENTIFICATION
+      ------------------------------------------------------------
+
+      Skylark's required method uses the browser identifier.
+
+      Device:
+        (iPhone; CPU iPhone OS
+        (iPad; CPU OS
+
+      OS version:
+        Version/X.X.X Mobile/...
+
+      IMPORTANT:
+      We intentionally do NOT use the CPU OS number as the
+      authoritative OS version.
+    */
+
+
+    function identifyAppleDevice() {
+      const ua = navigator.userAgent;
+
+
+      const isIPhone =
+        /\(iPhone;\s*CPU iPhone OS/i.test(ua);
+
+
+      const isIPad =
+        /\(iPad;\s*CPU OS/i.test(ua);
+
+
+      const versionMatch =
+        ua.match(
+          /Version\/(\d+(?:\.\d+){0,2})\s+Mobile\//i
+        );
+
+
+      let device = "other";
+
+      if (isIPhone) {
+        device = "iphone";
+      }
+
+      if (isIPad) {
+        device = "ipad";
+      }
+
+
+      return {
+        device: device,
+
+        version:
+          versionMatch
+            ? versionMatch[1]
+            : null,
+
+        userAgent: ua
+      };
+    }
+
+
+
+    /*
+      ------------------------------------------------------------
+      UI HELPERS
+      ------------------------------------------------------------
+    */
+
+
+    function disableDownload(message) {
+      getButton.classList.add("disabled");
+
+      getButton.removeAttribute("href");
+
+      getButton.setAttribute(
+        "aria-disabled",
+        "true"
+      );
+
+
+      if (message) {
+        statusMessage.textContent = message;
+        statusMessage.style.display = "block";
+      } else {
+        statusMessage.textContent = "";
+        statusMessage.style.display = "none";
+      }
+    }
+
+
+    function enableDownload(url) {
+      statusMessage.textContent = "";
+      statusMessage.style.display = "none";
+
+
+      getButton.classList.remove("disabled");
+
+      getButton.href = url;
+
+      getButton.setAttribute(
+        "aria-disabled",
+        "false"
+      );
+    }
+
+
+
+    /*
+      ------------------------------------------------------------
+      COMPATIBILITY TEXT
+      ------------------------------------------------------------
+    */
+
+
+    function compatibilityLabel(
+      minimumOS,
+      maximumOS
+    ) {
+      if (minimumOS && !maximumOS) {
+        return (
+          "Requires iOS or iPadOS " +
+          minimumOS +
+          " or later"
+        );
+      }
+
+
+      if (minimumOS && maximumOS) {
+        return (
+          "Requires iOS or iPadOS " +
+          minimumOS +
+          " through " +
+          maximumOS
+        );
+      }
+
+
+      if (!minimumOS && maximumOS) {
+        return (
+          "Supports iOS or iPadOS " +
+          maximumOS +
+          " or earlier"
+        );
+      }
+
+
+      return "See compatibility information";
+    }
+
+
+
+    /*
+      ------------------------------------------------------------
+      LOAD nXt
+      ------------------------------------------------------------
+    */
+
+
+    async function loadNxt() {
+
+      /*
+        Keep the button disabled while we determine the actual
+        state. This prevents a user from tapping a placeholder
+        URL before releases.json has loaded.
+      */
+
+      disableDownload();
+
+
+      try {
+
+        const response =
+          await fetch(
+            RELEASES_URL,
+            {
+              cache: "no-store"
+            }
+          );
+
+
+        if (!response.ok) {
+          throw new Error(
+            "Unable to load releases.json"
+          );
+        }
+
+
+        const data =
+          await response.json();
+
+
+
+        /*
+          Support either:
+
+          [
+            { "id": "nxt", ... }
+          ]
+
+          OR an object containing an array such as:
+
+          {
+            "releases": [
+              { "id": "nxt", ... }
+            ]
+          }
+
+          This keeps the lookup reasonably tolerant without
+          inventing product information.
+        */
+
+
+        let releases = [];
+
+
+        if (Array.isArray(data)) {
+          releases = data;
+        }
+
+        else if (
+          data &&
+          Array.isArray(data.releases)
+        ) {
+          releases = data.releases;
+        }
+
+        else if (
+          data &&
+          Array.isArray(data.products)
+        ) {
+          releases = data.products;
+        }
+
+
+        const nxt =
+          releases.find(
+            item =>
+              String(item.id).toLowerCase() ===
+              PRODUCT_ID
+          );
+
+
+        if (!nxt) {
+          throw new Error(
+            "nXt is not present in releases.json"
+          );
+        }
+
+
+
+        /*
+          Master-file values
+        */
+
+
+        const minimumOS =
+          nxt.minimumOS ?? null;
+
+        const maximumOS =
+          nxt.maximumOS ?? null;
+
+        const downloadURL =
+          nxt.downloadURL ?? null;
+
+        const available =
+          nxt.available === true;
+
+        const eol =
+          nxt.eol === true;
+
+
+
+        /*
+          Display compatibility using the master file.
+        */
+
+
+        compatibilityText.textContent =
+          compatibilityLabel(
+            minimumOS,
+            maximumOS
+          );
+
+
+        loadingMessage.style.display =
+          "none";
+
+
+
+        /*
+          --------------------------------------------------------
+          EOL OVERRIDE
+          --------------------------------------------------------
+
+          EOL takes priority over normal downloading.
+
+          nXt currently is not EOL, but the page still respects
+          the master value if that changes later.
+        */
+
+
+        if (eol) {
+          disableDownload(
+            "nXt is no longer supported."
+          );
+
+          return;
+        }
+
+
+
+        /*
+          --------------------------------------------------------
+          DEVICE IDENTIFICATION
+          --------------------------------------------------------
+        */
+
+
+        const device =
+          identifyAppleDevice();
+
+
+
+        /*
+          nXt is intended for iPhone / iPad.
+
+          We don't guess compatibility for an unidentified or
+          non-Apple mobile platform.
+        */
+
+
+        if (
+          device.device !== "iphone" &&
+          device.device !== "ipad"
+        ) {
+          disableDownload(
+            "nXt requires a compatible iPhone or iPad."
+          );
+
+          return;
+        }
+
+
+
+        /*
+          If Safari's Version/X.X.X value cannot be identified,
+          we fail closed rather than accidentally sending someone
+          to an incompatible release.
+        */
+
+
+        if (!device.version) {
+          disableDownload(
+            "We couldn't determine this device's compatibility."
+          );
+
+          return;
+        }
+
+
+
+        /*
+          --------------------------------------------------------
+          MINIMUM VERSION
+          --------------------------------------------------------
+        */
+
+
+        if (
+          minimumOS &&
+          compareVersions(
+            device.version,
+            minimumOS
+          ) < 0
+        ) {
+          disableDownload(
+            "This device isn't compatible with nXt."
+          );
+
+          return;
+        }
+
+
+
+        /*
+          --------------------------------------------------------
+          MAXIMUM VERSION
+          --------------------------------------------------------
+
+          null = no maximum.
+        */
+
+
+        if (
+          maximumOS &&
+          compareVersions(
+            device.version,
+            maximumOS
+          ) > 0
+        ) {
+          disableDownload(
+            "This device isn't compatible with nXt."
+          );
+
+          return;
+        }
+
+
+
+        /*
+          --------------------------------------------------------
+          RELEASE AVAILABILITY
+          --------------------------------------------------------
+
+          A compatible device still doesn't receive a download
+          unless the master file explicitly marks nXt available
+          AND supplies a URL.
+        */
+
+
+        if (
+          !available ||
+          !downloadURL
+        ) {
+          disableDownload(
+            "nXt is currently unavailable."
+          );
+
+          return;
+        }
+
+
+
+        /*
+          Everything passed.
+        */
+
+
+        enableDownload(downloadURL);
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "nXt release page:",
+          error
+        );
+
+
+        loadingMessage.style.display =
+          "none";
+
+
+        compatibilityText.textContent =
+          "Compatibility information unavailable";
+
+
+        /*
+          Never invent or fall back to a download URL if the
+          master file cannot be loaded.
+        */
+
+
+        disableDownload(
+          "nXt is currently unavailable."
+        );
+      }
+    }
+
+
+
+    loadNxt();
+
+  </script>
 
 </body>
 </html>
